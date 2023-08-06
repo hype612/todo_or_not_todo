@@ -63,8 +63,8 @@ bool mtime::operator<(const mtime& right) {
 }
 
 
-std::ostream& mtime::operator<< (std::ostream& o_stm) {
-    o_stm << hour << ":" << minute;
+std::ostream& operator<< (std::ostream& o_stm, const mtime& t) {
+    o_stm << t.getHour()  << ":" << t.getMinute();
     return o_stm;
 }
 

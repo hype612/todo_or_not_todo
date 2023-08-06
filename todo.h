@@ -25,9 +25,9 @@ public:
 
 
     //overloaded operators
-    std::ostream& operator<< (std::ostream& o_stm);
 };
 
 
+std::ostream& operator<< (std::ostream& o_stm, const todo& td);
 
 #endif

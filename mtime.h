@@ -24,8 +24,8 @@ public:
 
     //overloaded operators
     bool operator<(const mtime& right);
-    std::ostream& operator<< (std::ostream& o_stm);
 };
 
+std::ostream& operator<< (std::ostream& o_stm, const mtime& t);
 
 #endif

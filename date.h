@@ -26,10 +26,11 @@ public:
     bool setDay(int d);
     bool setDate(int y, int m, int d);
 
+
     //overloaded operators
     bool operator<(const date& right);
-    std::ostream& operator<< (std::ostream& o_stm);
 };
 
+std::ostream& operator<< (std::ostream& o_stm, const date& d);
 
 #endif

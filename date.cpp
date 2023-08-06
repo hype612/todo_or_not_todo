@@ -103,7 +103,7 @@ bool date::operator<(const date& right) {
 }
 
 
-std::ostream& date::operator<< (std::ostream& o_stm){
-    o_stm << year << "." << month << "." << day;
+std::ostream& operator<< (std::ostream& o_stm, const date& d) {
+    o_stm << d.getYear() << "." << d.getMonth() << "." << d.getDay();
     return o_stm;
 }
