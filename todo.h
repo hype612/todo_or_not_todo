@@ -11,20 +11,17 @@ class todo {
 private:
     date date_of_task;
     mtime start_time;
-    //todo: mtime end_time;
     std::string title;
     std::string comment;
 public:
-    todo(std::string i_line); //wont work this way, bcs of comment section 
+    todo(std::string i_line);  
     //getters
-    const date& getDate() { return date_of_task; }
-    const mtime& getTime() { return start_time; }
-    std::string& getTitle() { return title; }
-    std::string& getComment() { return comment; } 
-    
+    const date& getDate() const { return date_of_task; }
+    const mtime& getTime() const  { return start_time; }
+    const std::string& getTitle() const { return title; }
+    const std::string& getComment() const { return comment; } 
 
 
-    //overloaded operators
 };
 
 

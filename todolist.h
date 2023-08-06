@@ -1,6 +1,9 @@
 #ifndef TODOLIST_H
 #define TODOLISTH
 
+
+#include<iterator>
+#include<iostream>
 #include<list>
 #include "todo.h"
 
@@ -10,11 +13,11 @@ private:
     std::list<todo*> tasks;
 public:
     todolist();
-    todolist(const todo& task);
+    todolist(todo& task);
     
         
     int size() { return tasks.size(); }
-    bool insert(const todo& task);
+    bool insert(todo& task);
     bool pop(const todo& task);
     bool remove(const todo& task);
 
