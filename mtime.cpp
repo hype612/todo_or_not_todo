@@ -54,7 +54,7 @@ bool mtime::setTime(int h, int m) {
 
 
 
-bool mtime::operator<(const mtime& right) {
+bool mtime::operator<(const mtime& right) const {
     if(hour < right.hour && minute < right.minute) { 
         return true;
     }

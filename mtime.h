@@ -23,7 +23,7 @@ public:
     
 
     //overloaded operators
-    bool operator<(const mtime& right);
+    bool operator<(const mtime& right) const;
 };
 
 std::ostream& operator<< (std::ostream& o_stm, const mtime& t);

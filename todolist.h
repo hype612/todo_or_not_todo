@@ -5,19 +5,19 @@
 #include<iterator>
 #include<iostream>
 #include<list>
+#include <vector>
 #include "todo.h"
-
+#include "readFile.h"
 
 class todolist {
 private:
-    std::list<todo*> tasks;
+    std::list<todo> tasks;
 public:
     todolist();
-    todolist(todo& task);
-    
+    todolist(const std::string& filepath);
         
-    int size() { return tasks.size(); }
-    bool insert(todo& task);
+    int size() const { return tasks.size(); }
+    bool insert(const todo& task);
     bool pop(const todo& task);
     bool remove(const todo& task);
 

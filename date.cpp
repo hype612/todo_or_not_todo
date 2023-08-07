@@ -51,10 +51,11 @@ int date::getDay() const  { return day; }
 
 //setters
 bool date::setYear(int y) {
-    if(y > 2023) {
+    if(y > 2020) {
         year = y;
         return true;
     }
+    else year = -1;
     return false;
 }
 
@@ -63,6 +64,7 @@ bool date::setMonth(int m) {
         month = m;
         return true;
     }
+    else month = -1;
     return false;
 }
 
@@ -76,13 +78,12 @@ bool date::setDay(int d) {
             return true;     
         }
     }
-    else {
-        if((month % 2 == 0 && d < 32) || 
-           (month % 2 == 1 && d < 31)) {
-            day = d;
-            return true;
-        }
+    else if((month % 2 == 0 && d < 32) || 
+        (month % 2 == 1 && d < 31)) {
+        day = d;
+        return true;
     }
+    else day = -1;
     return false;
 }
 
@@ -97,7 +98,7 @@ bool date::setDate(int y, int m, int d) {
 
 
 //overloaded operators
-bool date::operator<(const date& right) {
+bool date::operator<(const date& right) const {
     if(year < right.year && month < right.month && day < right.month) return true;
     else return false;
 }

@@ -2,24 +2,38 @@
 
 todolist::todolist() {}
 
-todolist::todolist(todo& task) {
-    tasks.push_back(&task);
+todolist::todolist(const std::string& filepath) {
+    std::vector<std::string> i_vector = FileToStringVector(filepath);
+    for(int i = 0; i < i_vector.size(); ++i) {
+        this->insert(todo(i_vector[i]));
+    } 
+
+
 }
 
-bool todolist::insert(todo& task) {
-    std::list<todo*>::iterator it;
-    for (it = tasks.begin(); it != tasks.end(); ++it) {
-        if((task.getDate() < (*it)->getDate()) && (task.getTime() < (*it)->getTime())) { 
-            tasks.insert(it, &task);
-            return true;
-        }    
+bool todolist::insert(const todo& task) {
+    std::list<todo>::iterator it;
+    if(tasks.begin() == tasks.end()) {
+        tasks.push_back(task);
+        return true;
     }
-    return false;
+    for (it = tasks.begin(); it != tasks.end(); ++it) {
+        if((task.getDate() < it->getDate()) && (task.getTime() < it->getTime())) { 
+            tasks.insert(it, task);
+            return true;
+        }   
+    }
+
+    if(it == tasks.end()) {
+        tasks.insert(it, task);
+        return true; 
+    }
+    return false; //when should insertions fail???
 }
 
 
 void todolist::printTasks() {
-    std::list<todo*>::iterator it;
+    std::list<todo>::iterator it;
     for (it = tasks.begin(); it != tasks.end(); ++it) {
         std::cout << *it << std::endl;
     }

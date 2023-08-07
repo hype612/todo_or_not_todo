@@ -28,7 +28,7 @@ public:
 
 
     //overloaded operators
-    bool operator<(const date& right);
+    bool operator<(const date& right) const;
 };
 
 std::ostream& operator<< (std::ostream& o_stm, const date& d);
