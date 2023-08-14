@@ -1,19 +1,35 @@
 #include "readFile.h"
 
+FileReader::FileReader(const std::string& filepath)
+    : i_file(filepath)
+    {
+        if(i_file.is_open()) { return; }
+        else {
+            std::cerr << "could not open file: " << filepath << std::endl;
+           return; 
+        }
+    }
 
-std::vector<std::string> FileToStringVector(const std::string filepath)
-{
+FileReader::~FileReader() {
+    try { i_file.close(); }
+    catch(const std::exception& ex) {
+        std::cerr << "could not close file correctly" << std::endl;
+        return;
+    }
+}
+
+
+std::vector<std::string> FileReader::FileToStringVector() {
     std::vector<std::string> oVector;
     std::string line;
-    std::ifstream inFile(filepath);
-    while (std::getline(inFile, line))
+    while (std::getline(i_file, line))
     {
         oVector.push_back(line);
     }
     return oVector;
 }
 
-std::vector<std::string> splitString(const std::string& splitted,
+std::vector<std::string> FileReader::splitString(const std::string& splitted,
     char delimeter)
 {
     std::vector<std::string> tokens;

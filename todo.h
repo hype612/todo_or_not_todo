@@ -14,7 +14,7 @@ private:
     std::string title;
     std::string comment;
 public:
-    todo(std::string i_line);  
+    todo(const std::string& i_line);
     //getters
     const date& getDate() const { return date_of_task; }
     const mtime& getTime() const  { return start_time; }

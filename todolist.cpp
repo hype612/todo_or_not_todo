@@ -3,7 +3,8 @@
 todolist::todolist() {}
 
 todolist::todolist(const std::string& filepath) {
-    std::vector<std::string> i_vector = FileToStringVector(filepath);
+    FileReader f(filepath);
+    std::vector<std::string> i_vector = f.FileToStringVector();
     for(int i = 0; i < i_vector.size(); ++i) {
         this->insert(todo(i_vector[i]));
     } 
