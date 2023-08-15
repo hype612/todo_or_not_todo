@@ -1,9 +1,10 @@
 #include "readFile.h"
 
-FileReader::FileReader(const std::string& filepath)
-    : i_file(filepath)
+FileReader::FileReader(const std::string& filepath, std::ios_base::openmode openmode)
+    : t_file(filepath, openmode),
+      op_mode(openmode)
     {
-        if(i_file.is_open()) { return; }
+        if(t_file.is_open()) { return; }
         else {
             std::cerr << "could not open file: " << filepath << std::endl;
            return; 
@@ -11,7 +12,7 @@ FileReader::FileReader(const std::string& filepath)
     }
 
 FileReader::~FileReader() {
-    try { i_file.close(); }
+    try { t_file.close(); }
     catch(const std::exception& ex) {
         std::cerr << "could not close file correctly" << std::endl;
         return;
@@ -20,9 +21,15 @@ FileReader::~FileReader() {
 
 
 std::vector<std::string> FileReader::FileToStringVector() {
+    //check later if it makes senes
+    if(op_mode != std::ios_base::in) {
+        std::cerr << "file was not opened for reading" << std::endl;
+        std::vector<std::string> ret(1, "");
+        return ret; //construct an empty vector to return
+    }
     std::vector<std::string> oVector;
     std::string line;
-    while (std::getline(i_file, line))
+    while (std::getline(t_file, line))
     {
         oVector.push_back(line);
     }

@@ -32,6 +32,13 @@ bool todolist::insert(const todo& task) {
     return false; //when should insertions fail???
 }
 
+void todolist::tasks_to_file(const std::string& filepath) {
+    FileReader f(filepath, std::ios_base::out);
+    for(todo t : tasks) {
+        f.file_wrLine(t);
+    }
+    
+}
 
 void todolist::printTasks() {
     std::list<todo>::iterator it;

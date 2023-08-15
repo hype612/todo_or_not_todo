@@ -1,5 +1,5 @@
 #ifndef TODOLIST_H
-#define TODOLISTH
+#define TODOLIST_H
 
 
 #include<iterator>
@@ -22,6 +22,7 @@ public:
     bool remove(const todo& task);
 
     void printTasks();
+    void tasks_to_file(const std::string& filepath);
 };
 
 

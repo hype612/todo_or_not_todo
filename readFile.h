@@ -13,18 +13,25 @@
 
 class FileReader {
 public:
-    FileReader(const std::string& filepath);
+    FileReader(const std::string& filepath, std::ios_base::openmode openmode = std::ios_base::in);
     ~FileReader();
 
+    template<typename T>
+    void file_wrLine(const T& toPrint) {
+        t_file << toPrint;    
+    }
     std::vector<std::string> FileToStringVector();
     static std::vector<std::string> splitString(const std::string& splitted, char delimeter);
 
 private:
+    //no point in calling def ctor
     FileReader();
+    //prohibited copying since it would not make sense anyway
     FileReader(const FileReader&);
     FileReader& operator=(const FileReader& rhs);
-    std::ifstream i_file; 
-
+    
+    std::fstream t_file;
+    std::ios_base::openmode op_mode; 
 };
 
 
