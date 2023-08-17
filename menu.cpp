@@ -7,3 +7,4 @@ void menu::printMenuArt() {
     std::cout << "||__|||__|||__|||__|||__||" << std::endl;
     std::cout << "|/__\\|/__\\|/__\\|/__\\|/__\\|" << std::endl;
 }
+
