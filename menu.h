@@ -8,4 +8,10 @@ namespace menu {
 
 }
 
+class Menu {
+private:
+    Menu();
+
+};
+
 #endif

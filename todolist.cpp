@@ -3,7 +3,7 @@
 todolist::todolist() {}
 
 todolist::todolist(const std::string& filepath) {
-    FileReader f(filepath);
+    FileAccess f(filepath);
     std::vector<std::string> i_vector = f.FileToStringVector();
     for(int i = 0; i < i_vector.size(); ++i) {
         this->insert(todo(i_vector[i]));
@@ -33,7 +33,7 @@ bool todolist::insert(const todo& task) {
 }
 
 void todolist::tasks_to_file(const std::string& filepath) {
-    FileReader f(filepath, std::ios_base::out);
+    FileAccess f(filepath, std::ios_base::out);
     for(todo t : tasks) {
         f.file_wrLine(t);
     }
