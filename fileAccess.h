@@ -16,9 +16,11 @@ public:
     FileAccess(const std::string& filepath, std::ios_base::openmode openmode = std::ios_base::in);
     ~FileAccess();
 
-    template<typename T>
+    // was templated 
+    // changed to date only
+    template<class T>
     void file_wrLine(const T& toPrint) {
-        t_file << toPrint;    
+        t_file << toPrint << "\n";    
     }
     std::vector<std::string> FileToStringVector();
     static std::vector<std::string> splitString(const std::string& splitted, char delimeter);

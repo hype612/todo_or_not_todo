@@ -10,38 +10,17 @@
 
 int main() {
     todolist t("./resources/saved_tasks.txt");
-    menu::printMenuArt();
-    t.printTasks();
-    std::cout << "give new task by the following format: " << std::endl;
-    std::cout << "YYYY.MM.DD;HH:MM;TITLE;DESCRIPTION" << std::endl;
-    /*std::string ctor_line;
-    //std::cin.get() >> ctor_line;
-    t.insert(todo(ctor_line));
-    std::cout << "here are the new list of tasks: \n \n \n";
-    t.printTasks();
-    char input;
-    while (input != '0') {
-        system("cls");
+    std::string ctor_line = "";
+    while(ctor_line != "q") {
+        //system("clear");
         menu::printMenuArt();
-        std::cout << "1. list current tasks \n2. add a new task to the list \n3. remove done task \n0. exit" << std::endl;
-        std::cin >> input;
-        std::string temp_put;
-        switch (input) {
-            case '1':
-                t.printTasks();
-                break;
-            case '2':
-                std::cout << "task format: YYYY.MM.DD;HH.MM;TITLE;DESCRIPTION" << std::endl;
-                std::cin >> temp_put;
-                t.insert(temp_put);
-                break;
-            case '3':
-                //define pop
-                break;
-            default:
-                break; 
-        }
+        t.printTasks();
+        std::cout << "give new task by the following format: " << std::endl;
+        std::cout << "YYYY.MM.DD;HH:MM;TITLE;DESCRIPTION" << std::endl;
+        std::getline(std::cin, ctor_line);
+        if(ctor_line != "q")
+            t.insert(todo(ctor_line));
     }
-    t.tasks_to_file("./resources/saved_tasks");*/
+    t.tasks_to_file("./resources/saved_tasks.txt");
     return 0;
 }

@@ -23,8 +23,7 @@ public:
 
 
 };
-
-
+std::ostream& operator<< (std::fstream& o_stm, const todo& td);
 std::ostream& operator<< (std::ostream& o_stm, const todo& td);
 
 #endif

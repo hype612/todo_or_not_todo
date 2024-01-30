@@ -1,4 +1,5 @@
 #include "todolist.h"
+#include <iostream>
 
 todolist::todolist() {}
 
@@ -6,6 +7,7 @@ todolist::todolist(const std::string& filepath) {
     FileAccess f(filepath);
     std::vector<std::string> i_vector = f.FileToStringVector();
     for(int i = 0; i < i_vector.size(); ++i) {
+        std::cout << i_vector[i] << std::endl;
         this->insert(todo(i_vector[i]));
     } 
 
@@ -24,7 +26,6 @@ bool todolist::insert(const todo& task) {
             return true;
         }   
     }
-
     if(it == tasks.end()) {
         tasks.insert(it, task);
         return true; 

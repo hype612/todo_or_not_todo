@@ -18,6 +18,13 @@ todo::todo(const std::string& i_line)  {
 }
 
 
+// for output files - currently writes the save file b4 closing app
+std::ostream& operator<< (std::fstream& o_stm, const todo& td) {
+    o_stm << td.getDate() << ";" << td.getTime() << ";" << td.getTitle() << ";" << td.getComment();
+    return o_stm;
+}
+
+// for printing on console
 std::ostream& operator<< (std::ostream& o_stm, const todo& td) {
     o_stm << td.getDate() << " | " << td.getTime() << " | " << td.getTitle() << " | " << td.getComment();
     return o_stm;
