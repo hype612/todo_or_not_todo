@@ -105,8 +105,16 @@ bool date::operator<(const date& right) const {
 
 
 std::ostream& operator<< (std::ostream& o_stm, const date& d) {
-    o_stm << d.getYear() << "." << d.getMonth() << "." << d.getDay();
+    o_stm << d.getYear();
+    o_stm << ".";
+    if( d.getMonth() < 10 ) { 
+        o_stm << "0";
+    }
+    o_stm <<  d.getMonth();
+    o_stm <<  "."; 
+    if( d.getDay() < 10 ) { 
+        o_stm <<  "0";
+    }
+    o_stm <<  d.getDay(); 
     return o_stm;
 }
-
-
